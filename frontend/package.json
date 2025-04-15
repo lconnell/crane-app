@@ -1,0 +1,23 @@
+{
+  "name": "crane-app-vue",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "NITRO_PORT=8888 nuxt dev",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "lint": "eslint . --ext .js,.vue"
+  },
+  "dependencies": {
+    "@mdi/font": "^7.4.47",
+    "nuxt": "latest",
+    "vite-plugin-vuetify": "latest",
+    "vuetify": "latest"
+  },
+  "devDependencies": {
+    "@nuxt/eslint-config": "latest",
+    "@types/node": "^22.14.1",
+    "eslint": "latest"
+  }
+}
