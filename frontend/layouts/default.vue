@@ -1,24 +1,27 @@
 <template>
-  <v-app>
-    <v-app-bar color="primary" dark app>
-      <v-app-bar-nav-icon @click="drawer = !drawer" />
-      <v-toolbar-title>Crane Shop Management</v-toolbar-title>
-      <v-spacer />
-      <v-spacer />
-      <v-btn v-if="isAuthenticated" @click="logout" text class="logout-link" title="Sign Out">
-        Logout
-      </v-btn>
-    </v-app-bar>
-    <v-navigation-drawer v-model="drawer" app>
-      <v-list>
-        <v-list-item to="/workorders" title="Workorders" prepend-icon="mdi-clipboard-list-outline" />
-        <v-list-item to="/inventory" title="Inventory" prepend-icon="mdi-warehouse" />
-      </v-list>
-    </v-navigation-drawer>
-    <v-main>
-      <slot />
-    </v-main>
-  </v-app>
+  <!-- Entire layout is wrapped in <client-only> to guarantee SSR/client DOM consistency and prevent hydration mismatches for all pages using this layout -->
+  <client-only>
+    <v-app>
+      <v-app-bar color="primary" dark app>
+        <v-app-bar-nav-icon @click="drawer = !drawer" />
+        <v-toolbar-title>Crane Shop Management</v-toolbar-title>
+        <v-spacer />
+        <v-spacer />
+        <v-btn v-if="isAuthenticated" @click="logout" text class="logout-link" title="Sign Out">
+          Logout
+        </v-btn>
+      </v-app-bar>
+      <v-navigation-drawer v-model="drawer" app>
+        <v-list>
+          <v-list-item to="/workorders" title="Workorders" prepend-icon="mdi-clipboard-list-outline" />
+          <v-list-item to="/inventory" title="Inventory" prepend-icon="mdi-warehouse" />
+        </v-list>
+      </v-navigation-drawer>
+      <v-main>
+        <slot />
+      </v-main>
+    </v-app>
+  </client-only>
 </template>
 
 <script setup lang="ts">

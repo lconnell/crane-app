@@ -1,15 +1,18 @@
 <template>
   <v-container class="fill-height d-flex flex-column justify-center align-center">
-    <v-card class="pa-6 login-card" max-width="500">
-      <h2 class="mb-4">Sign In</h2>
-      <v-form @submit.prevent="onLogin">
-        <v-text-field v-model="username" label="Username" type="text" required />
-        <v-text-field v-model="password" label="Password" type="password" required />
-        <v-btn :loading="loading" type="submit" color="primary" class="mt-4" block>Sign In</v-btn>
-      </v-form>
-      <v-alert v-if="error" type="error" class="mt-4">{{ error }}</v-alert>
-      <v-alert v-if="success" type="success" class="mt-4">Login successful! Redirecting...</v-alert>
-    </v-card>
+    <!-- Wrapped login form in <client-only> to prevent SSR hydration mismatches -->
+    <client-only>
+      <v-card class="pa-6 login-card" max-width="500">
+        <h2 class="mb-4">Sign In</h2>
+        <v-form @submit.prevent="onLogin">
+          <v-text-field v-model="username" label="Username" type="text" required />
+          <v-text-field v-model="password" label="Password" type="password" required />
+          <v-btn :loading="loading" type="submit" color="primary" class="mt-4" block>Sign In</v-btn>
+        </v-form>
+        <v-alert v-if="error" type="error" class="mt-4">{{ error }}</v-alert>
+        <v-alert v-if="success" type="success" class="mt-4">Login successful! Redirecting...</v-alert>
+      </v-card>
+    </client-only>
   </v-container>
 </template>
 
